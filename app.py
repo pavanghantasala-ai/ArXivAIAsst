@@ -42,7 +42,7 @@ qa_prompt = PromptTemplate(
 summary_chain = summary_prompt | llm  # New syntax replaces LLMChain
 qa_chain = qa_prompt | llm  # New syntax replaces LLMChain
 
-def get_recent_papers(days_back=1):
+def get_recent_papers(days_back=10):
     """Fetch recent AI papers from arXiv"""
     categories = ['cs.AI', 'cs.LG', 'cs.CL']
     date_since = datetime.now().astimezone() - timedelta(days=days_back)
