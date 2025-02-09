@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ask AI</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>AI Research Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script>
-        function askQuestion() {
-            let question = document.getElementById('question').value;
-            fetch('/ask', {
-                method: 'POST',
-                body: new URLSearchParams({ 'question': question }),
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            })
-            .then(response => response.json())
-            .then(data => document.getElementById('answer').innerText = "Answer: " + data.answer);
+        async function askQuestion() {
+            const question = document.getElementById("question").value;
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question: question })
+            });
+            const data = await response.json();
+            document.getElementById("response").innerText = data.answer;
         }
     </script>
 </head>
 <body>
-    <h1>Ask a Question About Recent AI Papers</h1>
-    <input type="text" id="question" placeholder="Enter your question">
+    <h1>🤖 Ask AI Research Assistant</h1>
+    <input type="text" id="question" placeholder="Ask about AI papers">
     <button onclick="askQuestion()">Ask</button>
-    <p id="answer"></p>
-    <a href="/">Back to Summaries</a>
+    <p id="response"></p>
+    <a href="/">Back to Papers</a>
 </body>
 </html>
-
