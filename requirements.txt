@@ -1,7 +1,5 @@
-Flask
-langchain
-langchain_community
+flask
 arxiv
-schedule
-ollama
+langchain
+langchain_ollama
 
