@@ -1,0 +1,7 @@
+Flask
+langchain
+langchain_community
+arxiv
+schedule
+ollama
+

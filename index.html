@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Paper Summaries</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🤖 Daily AI Research Updates</h1>
+    <ul>
+        {% for paper in summaries %}
+        <li>
+            <h2>{{ paper.title }}</h2>
+            <p>{{ paper.summary }}</p>
+            <a href="{{ paper.pdf_url }}" target="_blank">Read Full Paper</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="/ask">Ask Questions about these papers</a>
+</body>
+</html>
+
